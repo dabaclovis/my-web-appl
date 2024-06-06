@@ -125,6 +125,13 @@
                     </div>
                 </div>
             </div>
+            <div class="">
+                <div class="">
+                    <div class="">
+                        <strong class=" text-uppercase">catagories</strong>
+                    </div>
+                </div>
+            </div>
         </div>
         {{-- end right --}}
     </div>
