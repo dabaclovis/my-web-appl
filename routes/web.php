@@ -43,5 +43,6 @@ Route::prefix('users')->group(function () {
     Route::get('profile','profile')->name('users.profile');
     Route::post('udateMobile','updatemobile')->name('mobileUpdate');
     Route::post('avatar','avatarUpdate')->name('avatarUpdate');
+    Route::post('contacts','contactsAddress')->name('contacts.users');
     });
 });

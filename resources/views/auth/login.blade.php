@@ -41,7 +41,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="w3-row w3-section mb-3 mx-4">
                             <div class="offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -53,7 +53,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0">
+                        <div class="w3-row w3-section mb-0 mx-4">
                             <div class="offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}

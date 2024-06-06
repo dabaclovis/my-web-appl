@@ -26,7 +26,7 @@
             </div>
         @endforeach
         @else
-            <div class="w3-panel w3-teal w3-xlarge">
+            <div class="w3-panel w3-center w3-teal w3-xlarge">
                 <p>You  have not created any article</p>
             </div>
         @endif

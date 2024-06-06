@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Article;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -40,6 +41,8 @@ class HomeController extends Controller
         return view('users.profile',[
             $user_id = Auth::user()->id,
             $user = User::find($user_id),
+            $contact = Contact::find($user_id),
+            'contact' => $contact,
             'user' => $user,
         ]);
     }
@@ -79,9 +82,22 @@ class HomeController extends Controller
             'address' => 'required',
             'city' => 'required',
             'state' => 'required',
-            'zipcode' => 'required',
+            'zipcode' => 'nullable',
             'country' => 'required',
         ]);
+        Contact::where('id',Auth::user()->id)
+            ->updateOrInsert([
+                'user_id' => Auth::user()->id,
+                'address' => $request->input('address'),
+                'city' => $request->input('city'),
+                'state' => $request->input('state'),
+                'zipcode' => $request->input('zipcode'),
+                'country' => $request->input('country'),
+                'notes' => $request->input('notes'),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        return back();
     }
 
 }
