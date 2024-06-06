@@ -14,5 +14,10 @@
         font-size: 1.41rem;
         font-family: 'Times New Roman', Times, serif;
     }
+    #clovis{
+        width: 8%;
+    }
+
+
 </style>
 

@@ -73,5 +73,15 @@ class HomeController extends Controller
             return back();
         }
     }
+    public function contactsAddress(Request $request)
+    {
+        $this->validate($request, [
+            'address' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'zipcode' => 'required',
+            'country' => 'required',
+        ]);
+    }
 
 }
