@@ -42,5 +42,6 @@ Route::prefix('users')->group(function () {
     Route::get('home','index')->name('home');
     Route::get('profile','profile')->name('users.profile');
     Route::post('udateMobile','updatemobile')->name('mobileUpdate');
+    Route::post('avatar','avatarUpdate')->name('avatarUpdate');
     });
 });
