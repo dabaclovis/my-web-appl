@@ -13,6 +13,7 @@
 <script>
     $(document).ready(function(){
         $("#phNumber").hide();
+        $("#categoryForm").hide();
         $("#addrForm").hide();
         $("#Numbs").click(function(e){
             e.preventDefault();
@@ -21,6 +22,10 @@
         $("#addr").click(function(e){
             e.preventDefault();
             $("#addrForm").toggle();
+        });
+        $("#category").click(function(e){
+            e.preventDefault();
+            $("#categoryForm").toggle();
         });
     });
 </script>

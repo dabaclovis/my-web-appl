@@ -7,7 +7,7 @@
             <div class="w3-text-gray w3-card">
                 <div class="w3-display-container">
                     @if (Auth::user()->avatar)
-                        <img src="{{ asset('storage/users/' . Auth::user()->avatar) }}" class="w3-round-large" width="100%"
+                        <img src="{{ asset('storage/users/'.Auth::user()->avatar) }}" class="w3-round-large" width="100%"
                             alt="profile">
                     @endif
                     <div class="w3-text-white w3-display-topright w3-container w3-dark-gray w3-round-xlarge mt-2">
@@ -125,10 +125,55 @@
                     </div>
                 </div>
             </div>
-            <div class="">
-                <div class="">
-                    <div class="">
+            <div class="w3-display-container">
+                <div class="w3-container">
+                    <div class="w3-large">
                         <strong class=" text-uppercase">catagories</strong>
+                    </div>
+                    <div class="w3-row">
+                        <div class="w3-col w3-center" id="clovis">
+                            <i class="fa fa-folder-open w3-text-teal" aria-hidden="true"></i>
+                        </div>
+                        <div class="w3-rest">
+                            @if ($subjects)
+                            @foreach (json_decode($subjects->papers) as $subject)
+                            {{ Str::ucfirst($subject) }}  <br>
+                            @endforeach
+                            @endif
+                            <span id="category" class="mx-5"><i class="fa fa-edit w3-text-teal" aria-hidden="true"></i></span>
+                            <div class="w3-container" id="categoryForm">
+                                <form action="{{ route('users.category') }}" method="post">
+                                    @csrf
+                                    <div class="form-check">
+                                      <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name="subjects[]" id="subjects" value="chemistry">
+                                            Chemistry
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                      <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name="subjects[]" id="subjects" value="physics">
+                                            Physics
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                      <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name="subjects[]" id="subjects" value="biology">
+                                            Biology
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                      <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name="subjects[]" id="subjects" value="mathematic">
+                                            Mathematics
+                                      </label>
+                                    </div>
+                                    <div class="form-group">
+                                          <button type="submit" class="btn btn-sm btn-primary">create</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

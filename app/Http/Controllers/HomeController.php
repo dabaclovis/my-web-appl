@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Article;
 use App\Models\Contact;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -42,6 +43,8 @@ class HomeController extends Controller
             $user_id = Auth::user()->id,
             $user = User::find($user_id),
             $contact = Contact::find($user_id),
+            $subjects = Subject::find($user_id),
+            'subjects' => $subjects,
             'contact' => $contact,
             'user' => $user,
         ]);
@@ -86,7 +89,7 @@ class HomeController extends Controller
             'country' => 'required',
         ]);
         Contact::where('id',Auth::user()->id)
-            ->updateOrInsert([
+            ->update([
                 'user_id' => Auth::user()->id,
                 'address' => $request->input('address'),
                 'city' => $request->input('city'),
@@ -98,6 +101,21 @@ class HomeController extends Controller
                 'updated_at' => now(),
             ]);
         return back();
+    }
+
+    public function category(Request $request)
+    {
+        $this->validate($request,[
+            'subjects' => ['required','min:1'],
+        ]);
+        Subject::where('id',Auth::user()->id)->update([
+            'user_id' => Auth::user()->id,
+            'papers' => json_encode($request->input('subjects')),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        return back();
+
     }
 
 }

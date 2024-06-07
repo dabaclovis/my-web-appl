@@ -44,5 +44,6 @@ Route::prefix('users')->group(function () {
     Route::post('udateMobile','updatemobile')->name('mobileUpdate');
     Route::post('avatar','avatarUpdate')->name('avatarUpdate');
     Route::post('contacts','contactsAddress')->name('contacts.users');
+    Route::post('category','category')->name('users.category');
     });
 });
